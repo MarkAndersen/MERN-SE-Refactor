@@ -52,10 +52,10 @@ const SavedBooks = () => {
     if (!token) {
       return false;
     }
-    const [, { error }] = useMutation(REMOVE_BOOK);
+    const [deleteBook, { error }] = useMutation(REMOVE_BOOK);
 
     try {
-      // const response = await deleteBook(bookId, token);
+      const response = await deleteBook(bookId, token);
 
       if (!response.ok) {
         throw new Error('something went wrong!');

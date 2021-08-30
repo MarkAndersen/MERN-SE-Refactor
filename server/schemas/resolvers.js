@@ -3,8 +3,8 @@ const { User } = require('../models')
 
 const resolvers = {
     Query: {
-        user: async (parent, args, context) => {
-            return User.findOne({ _id: context.user._id }).populate('books');
+        me: async (parent, args, context) => {
+            return User.findOne({ _id: context.user._id }).populate('savedBooks');
         }
 //params...
     },
