@@ -1,7 +1,6 @@
 const { signToken } = require('../utils/auth');
-const { User } = require('../models')
-
-const resolvers = {
+const { User } = require('../models');
+const { AuthenticationError } = require('apollo-server-express');const resolvers = {
     Query: {
         me: async (parent, args, context) => {
             return User.findOne({ _id: context.user._id }).populate('savedBooks');
@@ -12,7 +11,9 @@ const resolvers = {
     Mutation: {
 
         addUser: async (parent, args) => {
-            return User.create(args)
+            const User = await User.create(args);
+            const token = signToken(user);
+            return { token, user };
         },
 
         login : async (parent, { email, password}) => {
