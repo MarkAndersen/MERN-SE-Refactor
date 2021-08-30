@@ -24,7 +24,7 @@ type Auth {
 }
 
 type Query {
-    Me(_id: ID!): User
+    me: User
 
 }
 

@@ -44,17 +44,17 @@ const resolvers = {
               throw new AuthenticationError('Not logged in');
     },
 
-        // deleteBook: async (parents, { savedBooks }, context) => {
-        //     console.log(args)
-        //     if(context.user) {
-        //         const removeBook =  await User.findOneAndDelete(
-        //             { _id: context.user._id },
-        //             {$pull: { savedBooks: bookIds }}
+        deleteBook: async (parents, { savedBooks }, context) => {
+            console.log(args)
+            if(context.user) {
+                return await User.findOneAndDelete(
+                    { _id: context.user._id },
+                    {$pull: { savedBooks: bookIds }}
 
-        //         )
-        //     }
+                )
+            }
 
-        // }
+        }
 
 
 
