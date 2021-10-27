@@ -41,7 +41,6 @@ const resolvers = {
     },
 
     saveBook: async (parents, { savedBook }, context) => {
-      console.log(savedBook);
       if (context.user) {
         const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
@@ -54,7 +53,6 @@ const resolvers = {
     },
 
     deleteBook: async (parents, args, context) => {
-      console.log(args);
       if (context.user) {
         const updatedUser = await User.findOneAndUpdate(
           { _id: context.user._id },
